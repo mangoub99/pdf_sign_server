@@ -2,7 +2,7 @@ import SignPDF from "./SignPDF";
 import fs from "node:fs";
 import path from "node:path";
 
-async function main() {
+/* async function main() {
   const pdfBuffer = new SignPDF(
     path.resolve("test_assets/minions.pdf"),
     path.resolve("test_assets/identity.p12")
@@ -16,4 +16,4 @@ async function main() {
   console.log(`New Signed PDF created called: ${pdfName}`);
 }
 
-main();
+main(); */

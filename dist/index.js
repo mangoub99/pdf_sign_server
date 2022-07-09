@@ -10,7 +10,7 @@ var UcertName;
 var UpdfName;
 
 const express = require("express");
-const app = express();
+const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
@@ -73,22 +73,22 @@ const upload1 = multer({
   },
 });
 
-app.use("/File", express.static("uploadPDF"));
-app.use("/File", express.static("uploadCERT"));
+router.use("/File", express.static("uploadPDF"));
+router.use("/File", express.static("uploadCERT"));
 
-app.post("/uploadPDF", upload.single("file"), (req, res) => {
+router.post("/uploadPDF", upload.single("file"), (req, res) => {
   res.json({
     success: 1,
     File_url: `http://localhost:8080/file/${req.file.filename}`,
   });
 });
-app.post("/uploadCERT", upload1.single("file"), (req, res) => {
+router.post("/uploadCERT", upload1.single("file"), (req, res) => {
   res.json({
     success: 1,
     File_url: `http://localhost:8080/file/${req.file.filename}`,
   });
 });
-app.get("/sign", async (req, res) => {
+router.get("/sign", async (req, res) => {
   try {
     await main(UpdfName, UcertName);
     res.send("successfully Signed");
@@ -96,7 +96,7 @@ app.get("/sign", async (req, res) => {
     console.log(err, "SomeThing Went Wrong ..");
   }
 });
-app.get("/", async (req, res) => {
+router.get("/", async (req, res) => {
   res.send("hello world");
   /* try {
     let doc = `./exports/Signed_${UpdfName}`;
@@ -121,16 +121,4 @@ app.get("/", async (req, res) => {
   } */
 });
 
-function errHandler(err, req, res, next) {
-  if (err instanceof multer.MulterError) {
-    res.json({
-      success: 0,
-      message: err.message,
-    });
-  }
-}
-app.use(errHandler);
-
-app.listen(8080, "0.0.0.0", () => {
-  console.log("server up and running");
-});
+module.exports = router;

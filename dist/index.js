@@ -86,9 +86,9 @@ router.post("/uploadCERT", upload1.single("file"), (req, res) => {
     success: 1,
   });
 });
-router.get("/sign",  (req, res) => {
+router.get("/sign", (req, res) => {
   try {
-    await main(UpdfName, UcertName);
+    main(UpdfName, UcertName);
     res.send("successfully Signed");
   } catch (err) {
     console.log(err, "SomeThing Went Wrong ..");

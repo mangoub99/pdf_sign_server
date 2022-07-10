@@ -97,8 +97,7 @@ router.get("/sign", async (req, res) => {
   }
 });
 router.get("/", async (req, res) => {
-  res.send("hello world");
-  /* try {
+  try {
     let doc = `./exports/Signed_${UpdfName}`;
 
     fs.access(doc, fs.constants.F_OK, (err) => {
@@ -118,7 +117,7 @@ router.get("/", async (req, res) => {
     });
   } catch (err) {
     console.log(err, "SomeThing Went Wrong ..");
-  } */
+  }
 });
 
 module.exports = router;

@@ -79,16 +79,14 @@ router.use("/File", express.static("uploadCERT"));
 router.post("/uploadPDF", upload.single("file"), (req, res) => {
   res.json({
     success: 1,
-    File_url: `http://localhost:8080/file/${req.file.filename}`,
   });
 });
 router.post("/uploadCERT", upload1.single("file"), (req, res) => {
   res.json({
     success: 1,
-    File_url: `http://localhost:8080/file/${req.file.filename}`,
   });
 });
-router.get("/sign", async (req, res) => {
+router.get("/sign",  (req, res) => {
   try {
     await main(UpdfName, UcertName);
     res.send("successfully Signed");

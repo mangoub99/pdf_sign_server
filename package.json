@@ -12,12 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.12.17",
-    "@babel/core": "^7.12.17",
-    "@babel/node": "^7.12.17",
-    "@babel/preset-env": "^7.12.17",
-    "@craftzdog/react-native-buffer": "^6.0.4",
-    "babel-plugin-module-resolver": "^4.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "http-errors": "~1.6.3",
